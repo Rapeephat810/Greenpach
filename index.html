@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Green Peach - แนะนำต้นไม้น่าปลูก</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <!-- ฟอนต์สวยทันสมัยสำหรับทุกหน้า -->
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&family=Prompt:wght@400;700&family=Sarabun:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Prompt', 'Kanit', 'Sarabun', 'Roboto', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #F5F1E9 0%, #EDE4D7 100%);
+      color: #4A4A4A;
+      letter-spacing: 0.01em;
+    }
+    .hero {
+      height: 380px;
+      background-image: url('./Gemini_Generated_Image_y558p8y558p8y558.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      animation: fadeIn 1.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-banner {
+      background: rgba(255,255,255,0.85);
+      border-radius: 1.5rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 8px 32px rgba(163,191,250,0.13);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      animation: slideDown 1.2s cubic-bezier(.6,-0.28,.74,.05);
+    }
+    @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @keyframes slideDown {
+      0% { transform: translateY(-60px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .hero-banner h1 {
+      font-family: 'Kanit', 'Prompt', 'Sarabun', 'Roboto', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 2.7rem;
+      color: #A3BFFA;
+      margin-bottom: 0.7rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.08);
+    }
+    .hero-banner p {
+      font-size: 1.2rem;
+      color: #4A4A4A;
+      margin-bottom: 1.2rem;
+    }
+    .hero-banner .cta-btn {
+      background: linear-gradient(90deg, #98FF98 60%, #A3BFFA 100%);
+      color: #4A4A4A;
+      font-weight: bold;
+      padding: 0.8rem 2.2rem;
+      border-radius: 9999px;
+      font-size: 1.15rem;
+      border: none;
+      box-shadow: 0 4px 16px rgba(163,191,250,0.13);
+      transition: background 0.3s, color 0.3s, transform 0.2s;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .hero-banner .cta-btn:hover {
+      background: linear-gradient(90deg, #A3BFFA 60%, #98FF98 100%);
+      color: #fff;
+      transform: translateY(-2px) scale(1.03);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #FFFFFF;
+      padding: 1rem;
+      gap: 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      font-family: 'Prompt', 'Kanit', 'Sarabun', 'Roboto', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #4A4A4A;
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+    }
+    nav a.active::after {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      margin-top: 0.3rem;
+      width: 40%;
+      height: 3px;
+      border-radius: 2px;
+      background: #98FF98;
+      transition: width 0.3s;
+    }
+    nav a:hover, nav a.active {
+      background-color: #98FF98;
+      color: #4A4A4A;
+      transform: translateY(-2px);
+    }
+    .content {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #FFFFFF;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .content h2 {
+      font-family: 'Kanit', 'Prompt', 'Sarabun', 'Roboto', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 2rem;
+      color: #A3BFFA;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    }
+    .content p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      color: #4A4A4A;
+    }
+    .plant-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+    .plant-item {
+      background: linear-gradient(135deg, #F9F5EB 60%, #EDE4D7 100%);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      text-align: center;
+      border: 2px solid #A3BFFA;
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s, background 0.5s;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(163,191,250,0.10);
+      min-height: 370px;
+      z-index: 1;
+    }
+    .plant-item::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #98FF98 0%, transparent 70%);
+      opacity: 0.18;
+      z-index: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .plant-item:hover::before {
+      opacity: 0.35;
+    }
+    .plant-item:hover {
+      transform: translateY(-8px) scale(1.05) rotate(-1deg);
+      box-shadow: 0 16px 40px 0 rgba(163,191,250,0.22);
+      border-color: #98FF98;
+      background: linear-gradient(120deg, #EDE4D7 60%, #C6F7E2 100%);
+    }
+    .plant-item img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      border: 4px solid #D4A373;
+      transition: transform 0.4s cubic-bezier(.68,-0.55,.27,1.55), border-color 0.3s;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(163,191,250,0.10);
+      animation: float 3.5s ease-in-out infinite;
+      z-index: 2;
+      position: relative;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px);}
+      50% { transform: translateY(-12px);}
+      100% { transform: translateY(0px);}
+    }
+    .plant-item:hover img {
+      transform: scale(1.15) rotate(2deg);
+      border-color: #98FF98;
+      filter: drop-shadow(0 0 12px #98FF98aa);
+    }
+    .plant-item h4 {
+      font-family: 'Kanit', 'Prompt', 'Sarabun', 'Roboto', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 1.3rem;
+      color: #A3BFFA;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 1px 4px #98FF9822;
+      position: relative;
+      z-index: 2;
+    }
+    .plant-item p {
+      font-size: 1rem;
+      color: #4A4A4A;
+      position: relative;
+      z-index: 2;
+    }
+    .plant-item .tip-btn {
+      margin-top: 0.5rem;
+      background: #fff;
+      color: #A3BFFA;
+      border: 2px solid #A3BFFA;
+      border-radius: 9999px;
+      padding: 0.3rem 1.1rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      margin-left: 0.5rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 8px rgba(163,191,250,0.10);
+      z-index: 2;
+      position: relative;
+    }
+    .plant-item .tip-btn:hover {
+      background: #A3BFFA;
+      color: #fff;
+      box-shadow: 0 4px 16px #A3BFFA44;
+    }
+    .plant-item .see-more-btn {
+      margin-top: 0.5rem;
+      background: linear-gradient(90deg, #98FF98 60%, #A3BFFA 100%);
+      color: #fff;
+      border: none;
+      border-radius: 9999px;
+      padding: 0.5rem 1.5rem;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(163,191,250,0.10);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 2;
+      position: relative;
+    }
+    .plant-item .see-more-btn:hover {
+      background: linear-gradient(90deg, #A3BFFA 60%, #98FF98 100%);
+      color: #4A4A4A;
+      transform: scale(1.08);
+      box-shadow: 0 4px 16px #98FF9844;
+    }
+    .badge {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: linear-gradient(90deg, #A3BFFA 60%, #98FF98 100%);
+      color: #fff;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(163,191,250,0.10);
+      letter-spacing: 1px;
+      z-index: 3;
+      animation: popBadge 1s;
+      filter: drop-shadow(0 0 6px #A3BFFA88);
+    }
+    @keyframes popBadge {
+      0% { transform: scale(0.7); opacity: 0; }
+      60% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    /* เพิ่ม particle effect */
+    .plant-list {
+      position: relative;
+      z-index: 1;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.18;
+      z-index: 0;
+      animation: particleMove 7s linear infinite;
+    }
+    @keyframes particleMove {
+      0% { transform: translateY(0) scale(1);}
+      100% { transform: translateY(-120px) scale(1.4);}
+    }
+    @media (max-width: 900px) {
+      .hero-banner { padding: 1.2rem 0.5rem; }
+      .content { padding: 1rem; }
+      .plant-list { grid-template-columns: 1fr; }
+      .floating-tip { left: 0.5rem; bottom: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-banner">
+      <h1>Green Peach</h1>
+      <p>รวมต้นไม้น่าปลูกสำหรับคนรักสุขภาพและธรรมชาติ<br>เลือกต้นไม้ที่ใช่ เติมความสดชื่นให้บ้านและคอนโดของคุณ</p>
+      <button class="cta-btn" onclick="window.location.href='product.html'">ดูสินค้าทั้งหมด</button>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html" class="active">หน้าแรก</a>
+    <a href="product.html">สินค้า</a>
+    <a href="Takecareoftrees.html">ดูแลต้นไม้</a>
+    <a href="article.html">เกี่ยวกับเรา</a>
+    <a href="contact.html">ติดต่อเรา</a>
+  </nav>
+
+  <div class="content">
+    <h2>🌿 แนะนำต้นไม้น่าปลูกในบ้านและคอนโด</h2>
+    <p>
+      ต้นไม้เหล่านี้ไม่เพียงแต่ช่วยฟอกอากาศ แต่ยังเพิ่มความสดชื่นและความสวยงามให้กับทุกพื้นที่<br>
+      เลือกต้นไม้ที่เหมาะกับสไตล์และไลฟ์สไตล์ของคุณ พร้อมเคล็ดลับดูแลง่ายๆ!
+    </p>
+
+    <div class="plant-list">
+      <div
+        class="plant-item"
+        tabindex="0"
+        data-name="เดหลี"
+        data-img="./da1.png"
+        data-tip="วางในแสงรำไร รดน้ำสัปดาห์ละครั้ง เพิ่มความชื้นด้วยการฉีดสเปรย์น้ำ"
+      >
+        <span class="badge">ยอดนิยม</span>
+        <img src="./da1.png" alt="เดหลี" />
+        <h4>เดหลี</h4>
+        <p>เพิ่มความชื้นและกำจัดสารพิษได้ดีเยี่ยม</p>
+        <button class="tip-btn">🌱 เคล็ดลับ</button>
+        <button class="see-more-btn" onclick="window.location.href='product.html'">ดูรายละเอียด</button>
+      </div>
+      <div
+        class="plant-item"
+        tabindex="0"
+        data-name="ต้นเศรษฐีเรือนใน"
+        data-img="./T03.png"
+        data-tip="ชอบแสงรำไร รดน้ำ 2-3 วัน/ครั้ง เช็ดใบด้วยผ้าชุบน้ำหมาด"
+      >
+        <span class="badge" style="background:linear-gradient(90deg,#98FF98 60%,#A3BFFA 100%)">แนะนำ</span>
+        <img src="./T03.png" alt="ต้นเศรษฐีเรือนใน" />
+        <h4>ต้นเศรษฐีเรือนใน</h4>
+        <p>กรองฝุ่นและสร้างบรรยากาศสดชื่น</p>
+        <button class="tip-btn">🌱 เคล็ดลับ</button>
+        <button class="see-more-btn" onclick="window.location.href='product.html'">ดูรายละเอียด</button>
+      </div>
+      <div
+        class="plant-item"
+        tabindex="0"
+        data-name="ลิ้นมังกร (Snake Plant)"
+        data-img="./T04.png"
+        data-tip="ทนแสงน้อย รดน้ำ 2 สัปดาห์/ครั้ง ไม่ชอบน้ำขัง"
+      >
+        <img src="./T04.png" alt="ลิ้นมังกร" />
+        <h4>ลิ้นมังกร (Snake Plant)</h4>
+        <p>ทนทานและผลิตออกซิเจนยามค่ำคืน</p>
+        <button class="tip-btn">🌱 เคล็ดลับ</button>
+        <button class="see-more-btn" onclick="window.location.href='product.html'">ดูรายละเอียด</button>
+      </div>
+      <div
+        class="plant-item"
+        tabindex="0"
+        data-name="เฟิร์นบอสตัน (Boston Fern)"
+        data-img="./T05.png"
+        data-tip="ชอบความชื้นสูง รดน้ำทุกวันหรือวันเว้นวัน"
+      >
+        <img src="./T05.png" alt="เฟิร์นบอสตัน" />
+        <h4>เฟิร์นบอสตัน (Boston Fern)</h4>
+        <p>เพิ่มความชื้นและความร่มรื่น</p>
+        <button class="tip-btn">🌱 เคล็ดลับ</button>
+        <button class="see-more-btn" onclick="window.location.href='product.html'">ดูรายละเอียด</button>
+      </div>
+      <div
+        class="plant-item"
+        tabindex="0"
+        data-name="ไอวี่อังกฤษ (English Ivy)"
+        data-img="./T06.jpg"
+        data-tip="วางในที่แสงอ่อน รดน้ำสัปดาห์ละครั้ง ชอบอากาศเย็น"
+      >
+        <img src="./T06.jpg" alt="ไอวี่อังกฤษ" />
+        <h4>ไอวี่อังกฤษ (English Ivy)</h4>
+        <p>กำจัดฟอร์มาลดีไฮด์อย่างมีประสิทธิภาพ</p>
+        <button class="tip-btn">🌱 เคล็ดลับ</button>
+        <button class="see-more-btn" onclick="window.location.href='product.html'">ดูรายละเอียด</button>
+      </div>
+      <div
+        class="plant-item"
+        tabindex="0"
+        data-name="กระบองเพชร (Cactus)"
+        data-img="./T07.png"
+        data-tip="ชอบแสงจัด รดน้ำ 2-3 สัปดาห์/ครั้ง ทนแล้งสูง"
+      >
+        <img src="./T07.png" alt="กระบองเพชร" />
+        <h4>กระบองเพชร (Cactus)</h4>
+        <p>ทนทานต่อสภาพแห้งแล้งและเพิ่มความสวยงาม</p>
+        <button class="tip-btn">🌱 เคล็ดลับ</button>
+        <button class="see-more-btn" onclick="window.location.href='product.html'">ดูรายละเอียด</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="floating-tip" id="floatingTip"></div>
+
+  <footer>
+    <p>© 2568 Green Peach - อัปเดตล่าสุด: 4 กรกฎาคม 2568</p>
+  </footer>
+
+  <script>
+    // ฟีเจอร์ Floating Tip เคล็ดลับ
+    document.addEventListener('DOMContentLoaded', () => {
+      const plantItems = document.querySelectorAll('.plant-item');
+      const floatingTip = document.getElementById('floatingTip');
+      plantItems.forEach(item => {
+        item.querySelector('.tip-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          const tip = item.getAttribute('data-tip');
+          showFloatingTip(`<b>🌱 เคล็ดลับ:</b> ${tip}`);
+        });
+        // accessibility: Enter/Space
+        item.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            item.querySelector('.see-more-btn').click();
+          }
+        });
+      });
+      function showFloatingTip(msg) {
+        floatingTip.innerHTML = msg;
+        floatingTip.classList.add('show');
+        clearTimeout(floatingTip._timeout);
+        floatingTip._timeout = setTimeout(() => {
+          floatingTip.classList.remove('show');
+        }, 2600);
+      }
+      // Navigation active link
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        if(link.href === location.href) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    });
+    // Particle effect
+    document.addEventListener('DOMContentLoaded', () => {
+      const plantList = document.querySelector('.plant-list');
+      if (plantList) {
+        for (let i = 0; i < 12; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          const size = Math.random() * 18 + 10;
+          p.style.width = p.style.height = size + 'px';
+          p.style.left = Math.random() * 98 + '%';
+          p.style.bottom = Math.random() * 80 + 'px';
+          p.style.background = `radial-gradient(circle, #A3BFFA 0%, #98FF98 80%, transparent 100%)`;
+          p.style.animationDelay = (Math.random() * 7) + 's';
+          plantList.appendChild(p);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
